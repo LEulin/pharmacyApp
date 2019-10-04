@@ -9,11 +9,8 @@ package onlinepurchase;
  *
  * @author 2ndyrGroupB
  */
-public interface CustomerTransaction {
-    
-    public boolean purchaseMedicine(String med_name);
-    public void viewAvailableMedicines();
-    public boolean availDiscount();
-    public void payment();
-    public void viewPurchasedMedicines();
+public interface UserOperation {
+    public void Login();
+    public void Logout();
+    public void Register();
 }

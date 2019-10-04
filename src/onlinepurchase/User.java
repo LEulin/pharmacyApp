@@ -5,53 +5,49 @@
  */
 package onlinepurchase;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 /**
  *
  * @author 2ndyrGroupB
  */
-public class User {
-    
-    private static List<MedicinesForCough> medCough = new ArrayList<MedicinesForCough>();
-    private static List<MedicinesForHeadache> medHeadache = new ArrayList<MedicinesForHeadache>();
-    private static List<MedicinesForBodyPain> medBodyPain = new ArrayList<MedicinesForBodyPain>();
-    private static List<MedicinesForAllergies> medAllergies = new ArrayList<MedicinesForAllergies>();
+public abstract class User implements UserOperation {
+
+    Scanner input = new Scanner(System.in);
 
     public User() {
     }
 
-    public static List<MedicinesForCough> getMedCough() {
-        return medCough;
+    public void Register(Account account) {
+        System.out.println("======Do not have any account yet?======");
+        System.out.println("-------Register First-------");
+        System.out.println("Enter Name: ");
+        String n = input.nextLine();
+        account.setName(n);
+        System.out.println("Enter Username: ");
+        String un = input.nextLine();
+        account.setUsername(un);
+        System.out.println("Enter Password: ");
+        String p = input.nextLine();
+        account.setPassword(p);
+        System.out.println("Enter Age: ");
+        String a = input.nextLine();
+        account.setAge(Integer.valueOf(a));
     }
 
-    public static void setMedCough(List<MedicinesForCough> medCough) {
-        User.medCough = medCough;
+    public void Login(Account account) {
+        while (true) {
+            System.out.println("-------Login--------");
+            System.out.println("Enter Username: ");
+            String ua1 = input.nextLine();
+            account.setUsername(ua1);
+            System.out.println("Enter Password: ");
+            String p1 = input.nextLine();
+            account.setPassword(p1);
+            if (ua1.equals(account.getUsername()) && p1.equals(account.getPassword())) {
+                Pharmacy gen = new Pharmacy("Generics Pharmacy");
+                System.out.println("-------Welcome to " + gen.getName() + "--------");
+            }
+        }
     }
-
-    public static List<MedicinesForHeadache> getMedHeadache() {
-        return medHeadache;
-    }
-
-    public static void setMedHeadache(List<MedicinesForHeadache> medHeadache) {
-        User.medHeadache = medHeadache;
-    }
-
-    public static List<MedicinesForBodyPain> getMedBodyPain() {
-        return medBodyPain;
-    }
-
-    public static void setMedBodyPain(List<MedicinesForBodyPain> medBodyPain) {
-        User.medBodyPain = medBodyPain;
-    }
-
-    public static List<MedicinesForAllergies> getMedAllergies() {
-        return medAllergies;
-    }
-
-    public static void setMedAllergies(List<MedicinesForAllergies> medAllergies) {
-        User.medAllergies = medAllergies;
-    }
-    
 }

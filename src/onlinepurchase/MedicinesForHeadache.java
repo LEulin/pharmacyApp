@@ -9,6 +9,15 @@ package onlinepurchase;
  *
  * @author 2ndyrGroupB
  */
-public class MedicinesForHeadache {
+public class MedicinesForHeadache extends Medicine{
+
+    public MedicinesForHeadache() {
+    }
+
+    public MedicinesForHeadache(int ID, String brandname, String genericname, String type, double price, int quantity) {
+        super(ID, brandname, genericname, type, price, quantity);
+    }
+
+
     
 }

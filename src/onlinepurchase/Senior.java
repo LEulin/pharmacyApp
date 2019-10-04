@@ -9,6 +9,22 @@ package onlinepurchase;
  *
  * @author 2ndyrGroupB
  */
-public class Senior {
+public abstract class Senior extends Customer implements CustomerOperation{
+
+    public Senior() {
+    }
+
+    public Senior(Account account) {
+        super(account);
+    }
+    
+    /**
+     *
+     * @return
+     */
+    @Override
+    public boolean availDiscount(){
+        return true;
+    }
     
 }

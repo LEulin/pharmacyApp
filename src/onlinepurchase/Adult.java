@@ -9,6 +9,14 @@ package onlinepurchase;
  *
  * @author 2ndyrGroupB
  */
-public class Adult {
+public abstract class Adult extends Customer{
+
+    public Adult() {
+    }
+
+    public Adult(Account account) {
+        super(account);
+    }
+    
     
 }

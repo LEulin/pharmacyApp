@@ -9,6 +9,13 @@ package onlinepurchase;
  *
  * @author 2ndyrGroupB
  */
-public class MedicinesForBodyPain {
+public class MedicinesForBodyPain extends Medicine{
+
+    public MedicinesForBodyPain() {
+    }
+
+    public MedicinesForBodyPain(int ID, String brandname, String genericname, String type, double price, int quantity) {
+        super(ID, brandname, genericname, type, price, quantity);
+    }
     
 }
