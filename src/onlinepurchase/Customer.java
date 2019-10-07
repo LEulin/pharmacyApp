@@ -12,6 +12,10 @@ package onlinepurchase;
 public abstract class Customer extends User implements CustomerOperation {
 
     private Account account;
+    
+    public Customer(int id,String userName, String password, int age) {
+        super(id,userName,password,age);
+    }
 
     public Customer() {
     }
@@ -34,34 +38,24 @@ public abstract class Customer extends User implements CustomerOperation {
 
         return true;
     }
-    //method to pay
-    @Override
-    public void payment() {
-
-    }
 
     //methods for view available medicines
     @Override
-    public boolean viewAvailableMedicinesForCough(MedicinesForCough med) {
+    public void viewAvailableMedicinesForCough(MedicinesForCough med) {
 
-        return true;
+        
     }
 
     @Override
-    public boolean viewAvailableMedicinesForHeadache(MedicinesForHeadache med) {
+    public void viewAvailableMedicinesForHeadache(MedicinesForHeadache med) {
 
-        return true;
+        
     }
 
-    /**
-     *
-     * @param med
-     * @return
-     */
     @Override
-    public boolean viewAvailableMedicinesForBodyPain(MedicinesForBodyPain med) {
+    public void viewAvailableMedicinesForBodyPain(MedicinesForBodyPain med) {
 
-        return true;
+       
     }
 
     /**
@@ -70,9 +64,13 @@ public abstract class Customer extends User implements CustomerOperation {
      * @return
      */
     @Override
-    public boolean viewAvailableMedicinesForAllergies(MedicinesForAllergies med) {
+    public void viewAvailableMedicinesForAllergies(MedicinesForAllergies med) {
 
-        return true;
+    }
+    
+    public void orderItem(Pharmacy a, User e){
+        
+    
     }
 
 }

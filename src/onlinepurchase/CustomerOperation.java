@@ -13,14 +13,10 @@ public interface CustomerOperation {
     
     public boolean purchaseMedicine(Medicine name);
     
-    public boolean viewAvailableMedicinesForCough(MedicinesForCough med);
-    public boolean viewAvailableMedicinesForHeadache(MedicinesForHeadache med);
-    public boolean viewAvailableMedicinesForBodyPain(MedicinesForBodyPain med);
-    public boolean viewAvailableMedicinesForAllergies(MedicinesForAllergies med);
+    public void viewAvailableMedicinesForCough(MedicinesForCough med);
+    public void viewAvailableMedicinesForHeadache(MedicinesForHeadache med);
+    public void viewAvailableMedicinesForBodyPain(MedicinesForBodyPain med);
+    public void viewAvailableMedicinesForAllergies(MedicinesForAllergies med);
     
-    public boolean availDiscount();
-    
-    public void payment();
-    
-    public void viewPurchasedMedicines();
+    public void viewPurchasedMedicines(Pharmacy a);
 }

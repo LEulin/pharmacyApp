@@ -18,9 +18,13 @@ public class Medicine {
     private String type;
     private double price;
     private int quantity;
-    ArrayList<Medicine> medicineList = new ArrayList<>();
 
     public Medicine() {
+    }
+    
+    public Medicine(Medicine e){
+        this(e.getID(),e.getBrandname(),e.getGenericname(),e.getType(),e.getPrice(),e.getQuantity());
+    
     }
 
     public Medicine(int ID, String brandname, String genericname, String type, double price, int quantity) {
@@ -73,10 +77,6 @@ public class Medicine {
         this.quantity = quantity;
     }
 
-    public void setMedicineList(ArrayList<Medicine> medicineList) {
-        this.medicineList = medicineList;
-    }
-
     public int getID() {
         return ID;
     }
@@ -101,9 +101,6 @@ public class Medicine {
         return quantity;
     }
 
-    public ArrayList<Medicine> getMedicineList() {
-        return medicineList;
-    }
 
     @Override
     public String toString() {

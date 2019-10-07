@@ -5,15 +5,19 @@
  */
 package onlinepurchase;
 
-/**
- *
- * @author eulinle_sd2022
- */
-public abstract class Pharmacist extends User implements PharmacistOperation {
+import java.util.Scanner;
+
+
+public class Pharmacist extends User {
 
     private Account account;
+    Scanner input = new Scanner(System.in);
 
     public Pharmacist() {
+    }
+    
+    public Pharmacist(String userName, String password){
+        super(userName,password);
     }
 
     public Pharmacist(Account account) {
@@ -29,99 +33,113 @@ public abstract class Pharmacist extends User implements PharmacistOperation {
     }
 
     //methods for adding medicines
-    @Override
-    public boolean addMedicineForCough(MedicinesForCough med) {
-        Pharmacy.getMedForCough().add(med);
-        return true;
+    
+    public void addMedicineForCough(Pharmacy a, Medicine e) {
+        int size = a.getMedForCough().size()+1;
+        System.out.print("Enter Brand Name: ");
+        String bName = input.nextLine();
+        System.out.print("Enter Generic Name: ");
+        String gName = input.nextLine();
+        System.out.print("Enter price: ");
+        String price = input.nextLine();
+        System.out.println("Enter quantity: ");
+        String qty = input.nextLine();        
+        a.getMedForCough().add(new MedicinesForCough(size,bName,gName,"Cough",Double.valueOf(price),Integer.valueOf(qty)));
     }
 
-    @Override
-    public boolean addMedicineForHeadache(MedicinesForHeadache med) {
-        Pharmacy.getMedForHeadache().add(med);
-        return true;
+    
+    public void addMedicineForHeadache(Pharmacy a, Medicine e) {
+        int size = a.getMedForHeadache().size()+1;
+        System.out.print("Enter Brand Name: ");
+        String bName = input.nextLine();
+        System.out.print("Enter Generic Name: ");
+        String gName = input.nextLine();
+        System.out.print("Enter price: ");
+        String price = input.nextLine();
+        System.out.println("Enter quantity: ");
+        String qty = input.nextLine();        
+        a.getMedForHeadache().add(new MedicinesForHeadache(size,bName,gName,"Headache",Double.valueOf(price),Integer.valueOf(qty)));
+
     }
 
-    @Override
-    public boolean addMedicineForBodypain(MedicinesForBodyPain med) {
-        Pharmacy.getMedForBodyPain().add(med);
-        return true;
+    
+    public void addMedicineForBodypain(Pharmacy a, Medicine e) {
+        int size = a.getMedForBodyPain().size()+1;
+        System.out.print("Enter Brand Name: ");
+        String bName = input.nextLine();
+        System.out.print("Enter Generic Name: ");
+        String gName = input.nextLine();
+        System.out.print("Enter price: ");
+        String price = input.nextLine();
+        System.out.println("Enter quantity: ");
+        String qty = input.nextLine();        
+        a.getMedForBodyPain().add(new MedicinesForBodyPain(size,bName,gName,"Body Pain",Double.valueOf(price),Integer.valueOf(qty)));
+
     }
 
-    @Override
-    public boolean addMedicineForAllergies(MedicinesForAllergies med) {
-        Pharmacy.getMedForAllergies().add(med);
-        return true;
+   
+    public void addMedicineForAllergies(Pharmacy a, Medicine e) {
+        int size = a.getMedForAllergies().size()+1;
+        System.out.print("Enter Brand Name: ");
+        String bName = input.nextLine();
+        System.out.print("Enter Generic Name: ");
+        String gName = input.nextLine();
+        System.out.print("Enter price: ");
+        String price = input.nextLine();
+        System.out.println("Enter quantity: ");
+        String qty = input.nextLine();        
+        a.getMedForAllergies().add(new MedicinesForAllergies(size,bName,gName,"Allergies",Double.valueOf(price),Integer.valueOf(qty)));
     }
 
     //methods for removing medicines
-    @Override
-    public boolean removeMedicineForCough(MedicinesForCough med) {
-        return true;
+    
+    public void removeMedicineForCough(Pharmacy a) {
+//        displayAvailableMedicinesForCough(a);
+        System.out.println("Enter medicine ID to remove: ");
+        int choice = input.nextInt();
+        for(int i = 0; i < a.getMedForCough().size(); i++){
+            if(a.getMedForCough().get(i).getID() == choice){
+                a.getMedForCough().remove(a.getMedForCough().get(i));
+            }
+        }
     }
     
-    @Override
-    public boolean removeMedicineForHeadache(MedicinesForHeadache med) {
-        return true;
+    
+    public void removeMedicineForHeadache(Pharmacy a) {
+//        displayAvailableMedicinesForHeadache(a);
+        System.out.println("Enter medicine ID to remove: ");
+        int choice = input.nextInt();
+        for(int i = 0; i < a.getMedForHeadache().size(); i++){
+            if(a.getMedForHeadache().get(i).getID() == choice){
+                a.getMedForHeadache().remove(a.getMedForHeadache().get(i));
+            }
+        }
+
     }
     
-    @Override
-    public boolean removeMedicineForBodyPain(MedicinesForBodyPain med) {
-        return true;
+    
+    public void removeMedicineForBodyPain(Pharmacy a) {
+//        displayAvailableMedicinesForBodypain(a);
+        System.out.println("Enter medicine ID to remove: ");
+        int choice = input.nextInt();
+        for(int i = 0; i < a.getMedForBodyPain().size(); i++){
+            if(a.getMedForBodyPain().get(i).getID() == choice){
+                a.getMedForBodyPain().remove(a.getMedForBodyPain().get(i));
+            }
+        }
     }
     
-    @Override
-    public boolean removeMedicineForAllergies(MedicinesForAllergies med) {
-        return true;
-    }
-
-    //methods for displaying medicines
-    @Override
-    public void displayAvailableMedicinesForCough() {
-        System.out.println("Medicines for Cough\n");
-        System.out.println("_______________________________________________________________________________________________");
-        System.out.printf(" %-15s | %-15s  |  %-15s  |  %-10s  |  %-10s   |   %-2s", "ID", "Brandname", "Genericname", "Type", "Price", "Quantity\n");
-        System.out.println("_______________________________________________________________________________________________");
-        for (int i = 0; i < Pharmacy.getMedForCough().size(); i++) {
-            System.out.printf("%-16s |  %-16s  |  %-15s  |  %-10s  |  %-10f   |   %-2d", Pharmacy.getMedForCough().get(i).getID(), Pharmacy.getMedForCough().get(i).getBrandname(), Pharmacy.getMedForCough().get(i).getGenericname(), Pharmacy.getMedForCough().get(i).getType(), Pharmacy.getMedForCough().get(i).getPrice(), Pharmacy.getMedForCough().get(i).getQuantity());
-            System.out.println("\n-----------------------------------------------------------------------------------------------");
-
+    
+    public void removeMedicineForAllergies(Pharmacy a) {
+//        displayAvailableMedicinesForAllergies(a);
+        System.out.println("Enter medicine ID to remove: ");
+        int choice = input.nextInt();
+        for(int i = 0; i < a.getMedForAllergies().size(); i++){
+            if(a.getMedForAllergies().get(i).getID() == choice){
+                a.getMedForAllergies().remove(a.getMedForAllergies().get(i));
+            }
         }
     }
 
-    @Override
-    public void displayAvailableMedicinesForHeadache() {
-        System.out.println("Medicines for Headache\n");
-        System.out.println("_______________________________________________________________________________________________");
-        System.out.printf(" %-15s | %-15s  |  %-15s  |  %-10s  |  %-10s   |   %-2s", "ID", "Brandname", "Genericname", "Type", "Price", "Quantity\n");
-        System.out.println("_______________________________________________________________________________________________");
-        for (int i = 0; i < Pharmacy.getMedForHeadache().size(); i++) {
-            System.out.printf("%-16s |  %-16s  |  %-15s  |  %-10s  |  %-10f   |   %-2d", Pharmacy.getMedForHeadache().get(i).getID(), Pharmacy.getMedForHeadache().get(i).getBrandname(), Pharmacy.getMedForHeadache().get(i).getGenericname(), Pharmacy.getMedForHeadache().get(i).getType(), Pharmacy.getMedForHeadache().get(i).getQuantity());
-            System.out.println("\n-----------------------------------------------------------------------------------------------");
-        }
-    }
-
-    @Override
-    public void displayAvailableMedicinesForBodypain() {
-        System.out.println("Medicines for Bodypain\n");
-        System.out.println("_______________________________________________________________________________________________");
-        System.out.printf(" %-15s | %-15s  |  %-15s  |  %-10s  |  %-10s   |   %-2s", "ID", "Brandname", "Genericname", "Type", "Price", "Quantity\n");
-        System.out.println("_______________________________________________________________________________________________");
-        for (int i = 0; i < Pharmacy.getMedForBodyPain().size(); i++) {
-            System.out.printf("%-16s |  %-16s  |  %-15s  |  %-10s  |  %-10f   |   %-2d", Pharmacy.getMedForBodyPain().get(i).getID(), Pharmacy.getMedForBodyPain().get(i).getBrandname(), Pharmacy.getMedForBodyPain().get(i).getGenericname(), Pharmacy.getMedForBodyPain().get(i).getType(), Pharmacy.getMedForBodyPain().get(i).getPrice(), Pharmacy.getMedForBodyPain().get(i).getQuantity());
-            System.out.println("\n-----------------------------------------------------------------------------------------------");
-        }
-    }
-
-    @Override
-    public void displayAvailableMedicinesForAllergies() {
-        System.out.println("Medicines for Bodypain\n");
-        System.out.println("_______________________________________________________________________________________________");
-        System.out.printf(" %-15s | %-15s  |  %-15s  |  %-10s  |  %-10s   |   %-2s", "ID", "Brandname", "Genericname", "Type", "Price", "Quantity\n");
-        System.out.println("_______________________________________________________________________________________________");
-        for (int i = 0; i < Pharmacy.getMedForAllergies().size(); i++) {
-            System.out.printf("%-16s |  %-16s  |  %-15s  |  %-10s  |  %-10f   |   %-2d", Pharmacy.getMedForAllergies().get(i).getID(), Pharmacy.getMedForAllergies().get(i).getBrandname(), Pharmacy.getMedForAllergies().get(i).getGenericname(), Pharmacy.getMedForAllergies().get(i).getType(), Pharmacy.getMedForAllergies().get(i).getPrice(), Pharmacy.getMedForAllergies().get(i).getQuantity());
-            System.out.println("\n-----------------------------------------------------------------------------------------------");
-        }
-    }
 
 }

@@ -15,10 +15,13 @@ import java.util.List;
 public class Pharmacy {
 
     private String name;
-    private static List<MedicinesForCough> medForCough = new ArrayList<>();
-    private static List<MedicinesForHeadache> medForHeadache = new ArrayList<>();
-    private static List<MedicinesForBodyPain> medForBodyPain = new ArrayList<>();
-    private static List<MedicinesForAllergies> medForAllergies = new ArrayList<>();
+    List<MedicinesForCough> medForCough = new ArrayList<>();
+    List<MedicinesForHeadache> medForHeadache = new ArrayList<>();
+    List<MedicinesForBodyPain> medForBodyPain = new ArrayList<>();
+    List<MedicinesForAllergies> medForAllergies = new ArrayList<>();
+    Pharmacist pharma = new Pharmacist("Lealyn","Eulin");
+    ArrayList<Orders> orderList = new ArrayList<Orders>();
+    ArrayList<User> userList = new ArrayList<User>();
 
     public Pharmacy() {
     }
@@ -35,36 +38,34 @@ public class Pharmacy {
         this.name = name;
     }
 
-    public static List<MedicinesForCough> getMedForCough() {
+    public Pharmacist getPharma() {
+        return pharma;
+    }
+
+    public List<MedicinesForCough> getMedForCough() {
         return medForCough;
     }
 
-    public static void setMedForCough(List<MedicinesForCough> medForCough) {
-        Pharmacy.medForCough = medForCough;
-    }
-
-    public static List<MedicinesForHeadache> getMedForHeadache() {
+    public List<MedicinesForHeadache> getMedForHeadache() {
         return medForHeadache;
     }
 
-    public static void setMedForHeadache(List<MedicinesForHeadache> medForHeadache) {
-        Pharmacy.medForHeadache = medForHeadache;
-    }
-
-    public static List<MedicinesForBodyPain> getMedForBodyPain() {
+    public List<MedicinesForBodyPain> getMedForBodyPain() {
         return medForBodyPain;
     }
 
-    public static void setMedForBodyPain(List<MedicinesForBodyPain> medForBodyPain) {
-        Pharmacy.medForBodyPain = medForBodyPain;
-    }
-
-    public static List<MedicinesForAllergies> getMedForAllergies() {
+    public List<MedicinesForAllergies> getMedForAllergies() {
         return medForAllergies;
     }
 
-    public static void setMedForAllergies(List<MedicinesForAllergies> medForAllergies) {
-        Pharmacy.medForAllergies = medForAllergies;
+    public ArrayList<Orders> getOrderList() {
+        return orderList;
     }
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+    
+    
     
 }

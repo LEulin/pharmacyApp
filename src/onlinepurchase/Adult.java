@@ -9,7 +9,7 @@ package onlinepurchase;
  *
  * @author 2ndyrGroupB
  */
-public abstract class Adult extends Customer{
+public class Adult extends Customer{
 
     public Adult() {
     }
@@ -18,5 +18,16 @@ public abstract class Adult extends Customer{
         super(account);
     }
     
+    public Adult(int Id, String username, String password, int age){
+        super(Id,username,password,age);
+    }
     
+    public void payment(){
+        
+    }
+
+    @Override
+    public void viewPurchasedMedicines(Pharmacy a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

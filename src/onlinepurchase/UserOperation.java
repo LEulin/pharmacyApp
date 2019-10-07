@@ -10,7 +10,10 @@ package onlinepurchase;
  * @author 2ndyrGroupB
  */
 public interface UserOperation {
-    public void Login();
-    public void Logout();
-    public void Register();
+    public User Login(Pharmacy e, User a);
+    public User Logout(User a);
+    public void Register(Pharmacy a, User e);
+    
+    
+    
 }

@@ -9,7 +9,7 @@ package onlinepurchase;
  *
  * @author 2ndyrGroupB
  */
-public abstract class Senior extends Customer implements CustomerOperation{
+public class Senior extends Customer implements CustomerOperation{
 
     public Senior() {
     }
@@ -18,13 +18,20 @@ public abstract class Senior extends Customer implements CustomerOperation{
         super(account);
     }
     
-    /**
-     *
-     * @return
-     */
+    public Senior(int Id, String username, String password, int age){
+        super(Id,username,password,age);
+    }
+    
+    public void payment(){
+        
+    }
+    
+    public void availDiscount(){
+    }
+
     @Override
-    public boolean availDiscount(){
-        return true;
+    public void viewPurchasedMedicines(Pharmacy a) {
+        
     }
     
 }
