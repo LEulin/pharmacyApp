@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package onlinepurchase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author eulinle_sd2082
- */
 public class Pharmacy {
 
     private String name;
@@ -20,8 +11,8 @@ public class Pharmacy {
     List<MedicinesForBodyPain> medForBodyPain = new ArrayList<>();
     List<MedicinesForAllergies> medForAllergies = new ArrayList<>();
     Pharmacist pharma = new Pharmacist("Lealyn","Eulin");
-    ArrayList<Orders> orderList = new ArrayList<Orders>();
-    ArrayList<User> userList = new ArrayList<User>();
+    ArrayList<Orders> orderList = new ArrayList<>();
+    ArrayList<User> userList = new ArrayList<>();
 
     public Pharmacy() {
     }

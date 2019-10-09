@@ -14,6 +14,9 @@ public interface UserOperation {
     public User Logout(User a);
     public void Register(Pharmacy a, User e);
     
+//    public void viewAvailableMedicines();
+    
+    
     
     
 }

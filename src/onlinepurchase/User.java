@@ -30,10 +30,10 @@ public class User implements UserOperation {
     }
 
     public User(int id,String userName, String password, int age) {
+        this.id = id;
         this.userName = userName;
         this.password = password;
         this.age = age;
-        this.id = id;
     }
 
     public String getUserName() {
@@ -53,21 +53,21 @@ public class User implements UserOperation {
     }  
     
     public void addAllInfo(Pharmacy a){
-        a.getUserList().add(new Adult(1, "Patchan", "Gwapoako", 19));
-        a.getUserList().add(new Adult(2, "Patrick", "Pogiako", 19));
-        a.getUserList().add(new Senior(3, "Patik", "P@ssw0rd", 62));
-        a.getMedForBodyPain().add(new MedicinesForBodyPain(1, "Ibuprofen + Paracetamol", "Alaxan", "Body Pain", 8.25, 100));
-        a.getMedForBodyPain().add(new MedicinesForBodyPain(2, "Paracetamol Caffeine", "Rexidol", "Body Pain", 15.50, 75));
-        a.getMedForBodyPain().add(new MedicinesForBodyPain(3, "Ibuprofen", "Medicol Advance", "Body Pain", 6.00, 100));
-        a.getMedForAllergies().add(new MedicinesForAllergies(4, "Cetirizine", "Allerkid", "Allergies", 8, 50));
-        a.getMedForAllergies().add(new MedicinesForAllergies(5, "Loratadine", "Allerta", "Allergies", 16, 50));
-        a.getMedForAllergies().add(new MedicinesForAllergies(6, "Mometasone Furoate", "Allerta Dermatec", "Allergies", 24, 50));
-        a.getMedForCough().add(new MedicinesForCough(7, "Carbocisteine", "Solmux", "Cough", 17, 50));
-        a.getMedForCough().add(new MedicinesForCough(8, "Ambroxol", "Myracof", "Cough", 22, 50));
-        a.getMedForCough().add(new MedicinesForCough(9, "Ambroxol", "Expel OD", "Cough", 29, 50));
-        a.getMedForHeadache().add(new MedicinesForHeadache(10, "Paracetamol", "Biogesic 325", "Headache", 6, 50));
-        a.getMedForHeadache().add(new MedicinesForHeadache(11, "Paracetamol", "Biogesic", "Headache", 8, 50));
-        a.getMedForHeadache().add(new MedicinesForHeadache(12, "Paracetamol", "UHP Fevertab", "Headache", 5, 50));
+        a.getUserList().add(new Adult(1, "LEulin", "Simple", 19));
+        a.getUserList().add(new Adult(2, "Eulin", "Cute", 19));
+        a.getUserList().add(new Senior(3, "Lalyn", "eulin", 62));
+        a.getMedForBodyPain().add(new MedicinesForBodyPain(1, "Alaxan", "Ibuprofen + Paracetamol", "Body Pain", 8.25, 100));
+        a.getMedForBodyPain().add(new MedicinesForBodyPain(2, "Rexidol", "Paracetamol Caffeine", "Body Pain", 15.50, 75));
+        a.getMedForBodyPain().add(new MedicinesForBodyPain(3, "Medicol Advance ", "Ibuprofen", "Body Pain", 6.00, 100));
+        a.getMedForAllergies().add(new MedicinesForAllergies(4, "Allerkid", "Cetirizine", "Allergies", 8, 50));
+        a.getMedForAllergies().add(new MedicinesForAllergies(5, "Allerta", "Loratadine", "Allergies", 16, 50));
+        a.getMedForAllergies().add(new MedicinesForAllergies(6, "Allerta Dermatec", "Mometasone Furoate", "Allergies", 24, 50));
+        a.getMedForCough().add(new MedicinesForCough(7, "Solmux", "Carbocisteine", "Cough", 17, 50));
+        a.getMedForCough().add(new MedicinesForCough(8, "Myracof", "Ambroxol", "Cough", 22, 50));
+        a.getMedForCough().add(new MedicinesForCough(9, "Expel OD", "Ambroxol", "Cough", 29, 50));
+        a.getMedForHeadache().add(new MedicinesForHeadache(10, "Biogesic 325", "Paracetamol", "Headache", 6, 50));
+        a.getMedForHeadache().add(new MedicinesForHeadache(11, "Biogesic", "Paracetamol", "Headache", 8, 50));
+        a.getMedForHeadache().add(new MedicinesForHeadache(12, "UHP Fevertab", "Paracetamol", "Headache", 5, 50));
         a.getOrderList().add(new Orders(15, 1, 1, "Body Pain", 4, 33));
         a.getOrderList().add(new Orders(11, 3, 2, "Body Pain", 6, 50));
         a.getOrderList().add(new Orders(91, 2, 11, "Headache", 6, 40));       
@@ -96,60 +96,107 @@ public class User implements UserOperation {
 
     @Override
     public User Login(Pharmacy a, User e) {
-        User b = new User();
-        int count = 0;
-        System.out.print("Enter username: ");
-        String uname = input.nextLine();
-        for(int i = 0; i<a.getUserList().size();i++){
-            if(a.getUserList().get(i).getUserName().equals(uname) == true){               
-                count = 0;
-                while(count!=3){
-                    System.out.print("Enter password: ");
-                    String pass = input.nextLine();
-                    if(pass.equals(a.getUserList().get(i).getPassword()) == true){
-                        System.out.println("Successfully logged in!");
-                        b = a.getUserList().get(i);
-                        return b;
-                    }
-                    else {
-                        count++;
-                        System.out.print("Enter password again: ");
-                        pass = input.nextLine();                        
-                    }             
-                }
-                if(count==3){
-                    Error();
-                }
-            }
-            count++;
-        }
+//        User b = new User();
+//        System.out.print("Enter username: ");
+//        String uname = input.nextLine();
+//        for(int i = 0; i<a.getUserList().size();i++){
+//            if(a.getUserList().get(i).getUserName().equals(uname) == true){               
+//                int counts = 0;
+//                while(counts!=3){
+//                    System.out.print("Enter password: ");
+//                    String pass = input.nextLine();
+//                    if(pass.equals(a.getUserList().get(i).getPassword()) == true){
+//                        System.out.println("Successfully logged in!");
+//                        b = a.getUserList().get(i);
+//                        return b;
+//                    }
+//                    else {
+//                        counts++;
+//                        System.out.print("Enter password again: ");
+//                        pass = input.nextLine();                        
+//                    }             
+//                }
+//                if(counts==3){
+//                    Error();
+//                }
+//            }
+//            count++;
+//        }
+//        count = count-1;
+//        
+//        if(a.getPharma().getUserName().equals(uname)){
+//            int counts = 0;
+//            while(counts!=3){
+//                System.out.print("Enter password: ");
+//                String pass = input.nextLine();
+//                if(pass.equals(a.getPharma().getPassword()) == true){
+//                        System.out.println("Successfully logged in!");
+//                        b = a.getPharma();
+//                        return b;
+//                    }
+//                    else {
+//                        counts++;
+//                        System.out.print("Enter password again: ");
+//                        pass = input.nextLine();                        
+//                    } 
+//            }
+//        }
+//        count = count +1;
+//        
+//        if(count==a.getUserList().size()){
+//            Error();
+//        }
+        System.out.print("Input Username: ");
+       String name = input.nextLine();
+       int counts = 0;
+       if(a.getPharma().getUserName().equals(name) == true){
+           int count = 0;
+           System.out.println("Username matched!");
+           while (count != 3) {
+               System.out.print("Input Password: ");
+               String pass = input.nextLine();
+               if(a.getPharma().getPassword().equals(pass) == true){
+                   e = a.getPharma();
+                   return e;                    
+               }
+               else {
+                   count++;
+               }
+           }
+           if (count == 3){
+               Error();
+           }
+       }
+       else {
+           for (int i = 0; i < a.getUserList().size(); i++) {
+               if (name.equals(a.getUserList().get(i).getUserName()) == false) {
+                   counts += 1;
+                   if (counts == a.getUserList().size()) {
+                       Error();
+                   }
+               } else {
+                   int count = 0;
+                   System.out.println("Username matched!");
+                   while (count != 3) {
+                       System.out.print("Input Password: ");
+                       String pass = input.nextLine();
+                       for (int j = 0; j < a.getUserList().size(); j++) {
+                           if (pass.equals(a.getUserList().get(i).getPassword()) == true) {
+                               e = a.getUserList().get(i);
+                               System.out.println("Logged in! \nWelcome "+ a.getUserList().get(i).getUserName() + "!");
+                               return e;
+                           }
+                       }
+                       count += 1;
+                   }
+                   if (count == 3) {
+                       Error();
+                   }
+               }
+           }
+       }   
         
-        if(a.getPharma().getUserName().equals(uname)){
-            int counts = 0;
-            while(counts!=3){
-                System.out.print("Enter password: ");
-                String pass = input.nextLine();
-                if(pass.equals(a.getPharma().getPassword()) == true){
-                        System.out.println("Successfully logged in!");
-                        b = a.getPharma();
-                        return b;
-                    }
-                    else {
-                        counts++;
-                        System.out.print("Enter password again: ");
-                        pass = input.nextLine();                        
-                    } 
-            } 
-        }
-        else{
-            Error();
-        }
-        
-        if(count==a.getUserList().size()){
-            Error();
-        }
-        
-        return b;
+        return e;
     }
 
     @Override
@@ -261,6 +308,11 @@ public class User implements UserOperation {
             System.out.printf("%10s %5s %10s %5s %10s %5s %20s %5s %20s %10s %10s \n",a.getOrderList().get(i).getId(),"|",a.getOrderList().get(i).getUserId(),"|",a.getOrderList().get(i).getMedId(),"|",a.getOrderList().get(i).getMedName(),"|",a.getOrderList().get(i).getQty(),"|",a.getOrderList().get(i).getPrice());
         }
     }
+
+//    @Override
+//    public void viewAvailableMedicines() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
     
 

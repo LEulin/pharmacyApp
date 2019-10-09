@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package onlinepurchase;
 
 import java.util.Scanner;
 
-/**
- *
- * @author 2ndyrGroupB
- */
 public class OnlinePurchase {
 
     /**
@@ -95,7 +86,7 @@ public class OnlinePurchase {
                 }
                 else {
                     while(true){
-                        System.out.println("1. View Medicines\n2. Purchase\n3. Pay Order\n4. View Orders\n5. Log Out");
+                        System.out.println("1. View Medicines\n2. Purchase\n3. Payment\n4. View Orders\n5. Log Out");
                         int choose = input.nextInt();
                         if(choose == 1){
                             
