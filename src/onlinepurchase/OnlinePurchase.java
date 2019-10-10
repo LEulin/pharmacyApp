@@ -20,8 +20,8 @@ public class OnlinePurchase {
             System.out.print("Enter choice: ");
             int choice = input.nextInt();
             if (choice == 1) {
-                User a = user.Login(phar, user);
-                if (a == phar.getPharma() == true) {
+                user = user.Login(phar, user);
+                if (user == phar.getPharma() == true) {
                     System.out.println("Logged in as Pharmacist!");
                     while (true) {
                         System.out.println("1. Add Medicine\n2. Remove Medicine\n3. View Medicines\n4. View Orders\n5. Log out");
@@ -60,25 +60,35 @@ public class OnlinePurchase {
                         } else if (option == 4) {
                             phar.getPharma().viewAllOrders(phar);
                         } else if (option == 5) {
-                            User lealyn = phar.getPharma().Logout(a);
-                                break;
+                            phar.getPharma().Logout(user);
+                            break;
                             
                         } else {
                             System.out.println("Invalid Input!");
                         }
 
                     }
-
                 } else {
+                    Customer c = ((Customer)user);
                     while (true) {
                         System.out.println("1. View Medicines\n2. Purchase\n3. Payment\n4. View Orders\n5. Log Out");
                         int choose = input.nextInt();
                         if (choose == 1) {
-
+                            c.allMedicines(phar);
                         } else if (choose == 2) {
+                            c.purchaseMedicine(phar, user);                          
                         } else if (choose == 3) {
+                            if(c instanceof Senior){
+                                
+                            }
+                            else {
+                                
+                            }
                         } else if (choose == 4) {
+                            c.viewMyOrders(phar, user);
                         } else if (choose == 5) {
+                            user.Logout(user);
+                            break;
                         } else {
                             System.out.println("Invalid Input!");
                         }

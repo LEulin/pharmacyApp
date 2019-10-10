@@ -23,13 +23,6 @@ public abstract class Customer extends User implements CustomerOperation {
         this.account = account;
     }
 
-    //method to purchase
-    @Override
-    public boolean purchaseMedicine(Medicine name) {
-
-        return true;
-    }
-
     //methods for view available medicines
     @Override
     public void viewAvailableMedicinesForCough(MedicinesForCough med) {
@@ -49,11 +42,6 @@ public abstract class Customer extends User implements CustomerOperation {
        
     }
 
-    /**
-     *
-     * @param med
-     * @return
-     */
     @Override
     public void viewAvailableMedicinesForAllergies(MedicinesForAllergies med) {
 
@@ -63,5 +51,14 @@ public abstract class Customer extends User implements CustomerOperation {
         
     
     }
-
+    
+    public void viewMyOrders(Pharmacy a, User e){
+        System.out.printf("%10s %5s %10s %5s %10s %5s %20s %5s %20s %10s %10s", "Order ID", "|", "User ID", "|", "Medicine ID", "|", "Medicine Name", "|", "Quantity", "|", "Price\n");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+        for (int i = 0; i < a.getOrderList().size(); i++) {
+            if(a.getOrderList().get(i).getUserId() == e.getId()){
+                System.out.printf("%10s %5s %10s %5s %10s %5s %20s %5s %20s %10s %10s \n", a.getOrderList().get(i).getId(), "|", a.getOrderList().get(i).getUserId(), "|", a.getOrderList().get(i).getMedId(), "|", a.getOrderList().get(i).getMedName(), "|", a.getOrderList().get(i).getQty(), "|", a.getOrderList().get(i).getPrice());
+            }           
+        }
+    }
 }

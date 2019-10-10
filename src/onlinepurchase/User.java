@@ -83,8 +83,10 @@ public class User implements UserOperation {
         int age = input.nextInt();
         if (age >= 18 && age <= 59) {
             a.getUserList().add(new Adult(size, uName, pass,age));
+            System.out.println("Registered as an Adult!");
         } else if (age >= 60) {
             a.getUserList().add(new Senior(size, uName, pass,age));
+            System.out.println("Registered as Senior Citizen!");
         } else {
             System.out.println("Too young to register!");
         }
@@ -142,50 +144,83 @@ public class User implements UserOperation {
 //        if(count==a.getUserList().size()){
 //            Error();
 //        }
-        System.out.print("Input Username: ");
-        String name = input.nextLine();
-        int counts = 0;
-        if (a.getPharma().getUserName().equals(name) == true) {
+//        System.out.print("Input Username: ");
+//        String name = input.nextLine();
+//        int counts = 0;
+//        if (a.getPharma().getUserName().equals(name) == true) {
+//            int count = 0;
+//            System.out.println("Username matched!");
+//            while (count != 3) {
+//                System.out.print("Input Password: ");
+//                String pass = input.nextLine();
+//                if (a.getPharma().getPassword().equals(pass) == true) {
+//                    e = a.getPharma();
+//                    return e;
+//                }
+//                count++;     
+//            }
+//            if (count == 3) {
+//                Error();
+//            }
+//        } else {
+//            for (int i = 0; i < a.getUserList().size(); i++) {
+//                if (name.equals(a.getUserList().get(i).getUserName()) == false) {
+//                    counts++;
+//                    if (counts == a.getUserList().size()) {
+//                        Error();
+//                    }
+//                } else {
+//                    int count = 0;
+//                    System.out.println("Username matched!");
+//                    while (count != 3) {
+//                        System.out.print("Input Password: ");
+//                        String pass = input.nextLine();
+//                        for (int j = 0; j < a.getUserList().size(); j++) {
+//                            if (pass.equals(a.getUserList().get(i).getPassword()) == true) {
+//                                e = a.getUserList().get(i);
+//                                System.out.println("Logged in! \nWelcome " + a.getUserList().get(i).getUserName() + "!");
+//                                return e;
+//                            }
+//                        }
+//                        count++;
+//                    }
+//                    if (count == 3) {
+//                        Error();
+//                    }
+//                    count=0;
+//                }
+//            }
+//        }
+//        System.out.println("Diritso basa diri!");
+
+        System.out.print("Enter username: ");
+        String uname = input.nextLine();
+        if(a.getPharma().getUserName().equals(uname)){
+            System.out.print("Username matched!\nInput password: ");
+            String pass = input.nextLine();
+            if(pass.equals(a.getPharma().getPassword())){
+                System.out.println("You are now logged in as pharmacist!");
+                return a.getPharma();
+            }
+        
+        }
+        else {
             int count = 0;
-            System.out.println("Username matched!");
-            while (count != 3) {
-                System.out.print("Input Password: ");
-                String pass = input.nextLine();
-                if (a.getPharma().getPassword().equals(pass) == true) {
-                    e = a.getPharma();
-                    return e;
+            for(int i = 0; i<a.getUserList().size();i++){
+                if(a.getUserList().get(i).getUserName().equals(uname)){
+                    System.out.print("Enter password: ");
+                    String password = input.nextLine();
+                    if(password.equals(a.getUserList().get(i).getPassword())){
+                        System.out.println("You are now logged in as "+a.getUserList().get(i).getClass().getSimpleName()+"!");
+                        return a.getUserList().get(i);
+                    }
+                
                 }
-                count++;        
+                count++;   
             }
-            if (count == 3) {
+            if(count == a.getUserList().size()){
                 Error();
-            }
-        } else {
-            for (int i = 0; i < a.getUserList().size(); i++) {
-                if (name.equals(a.getUserList().get(i).getUserName()) == false) {
-                    counts++;
-                    if (counts == a.getUserList().size()) {
-                        Error();
-                    }
-                } else {
-                    int count = 0;
-                    System.out.println("Username matched!");
-                    while (count != 3) {
-                        System.out.print("Input Password: ");
-                        String pass = input.nextLine();
-                        for (int j = 0; j < a.getUserList().size(); j++) {
-                            if (pass.equals(a.getUserList().get(i).getPassword()) == true) {
-                                e = a.getUserList().get(i);
-                                System.out.println("Logged in! \nWelcome " + a.getUserList().get(i).getUserName() + "!");
-                                return e;
-                            }
-                        }
-                        count++;
-                    }
-                    if (count == 3) {
-                        Error();
-                    }
-                }
+            
             }
         }
         return e;
