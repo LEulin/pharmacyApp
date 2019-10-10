@@ -6,13 +6,13 @@ import java.util.List;
 public class Pharmacy {
 
     private String name;
-    List<MedicinesForCough> medForCough = new ArrayList<>();
-    List<MedicinesForHeadache> medForHeadache = new ArrayList<>();
-    List<MedicinesForBodyPain> medForBodyPain = new ArrayList<>();
-    List<MedicinesForAllergies> medForAllergies = new ArrayList<>();
+    List<MedicinesForCough> medForCough = new ArrayList<MedicinesForCough>();
+    List<MedicinesForHeadache> medForHeadache = new ArrayList<MedicinesForHeadache>();
+    List<MedicinesForBodyPain> medForBodyPain = new ArrayList<MedicinesForBodyPain>();
+    List<MedicinesForAllergies> medForAllergies = new ArrayList<MedicinesForAllergies>();
     Pharmacist pharma = new Pharmacist("Lealyn","Eulin");
-    ArrayList<Orders> orderList = new ArrayList<>();
-    ArrayList<User> userList = new ArrayList<>();
+    ArrayList<Orders> orderList = new ArrayList<Orders>();
+    ArrayList<User> userList = new ArrayList<User>();
 
     public Pharmacy() {
     }
