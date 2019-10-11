@@ -8,7 +8,8 @@ public class OnlinePurchase {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pharmacy phar = new Pharmacy();
+
+        Pharmacy phar = new Pharmacy("LEulin's Online Pharmacy");
         User user = new User();
         Medicine med = new Medicine();
         Scanner input = new Scanner(System.in);
@@ -23,12 +24,15 @@ public class OnlinePurchase {
             if (choice == 1) {
                 user = user.Login(phar, user);
                 if (user == phar.getPharma() == true) {
-                    System.out.println("Logged in as Pharmacist!");
+                    System.out.println("----------------Welcome to " + phar.getName() + '!' + "----------------");
+                    System.out.println("Enter the activity you wanto do!");
+                    System.out.println("-----------------------------------");
                     while (true) {
                         System.out.println("1. Add Medicine\n2. Remove Medicine\n3. View Medicines\n4. View Orders\n5. Log out");
                         System.out.print("Enter choice: ");
                         int option = input.nextInt();
                         if (option == 1) {
+                            System.out.println("Enter the category you want to add medicine");
                             System.out.println("1. Allergies\n2. Headache\n3. Cough\n4. Body Pain");
                             int inputs = input.nextInt();
                             if (inputs == 1) {
@@ -43,6 +47,7 @@ public class OnlinePurchase {
                                 System.out.println("Invalid choice!");
                             }
                         } else if (option == 2) {
+                            System.out.println("Enter the category you want to remove medicine");
                             System.out.println("1. Allergies\n2. Headache\n3. Cough\n4. Body Pain");
                             int inputs = input.nextInt();
                             if (inputs == 1) {
@@ -62,33 +67,38 @@ public class OnlinePurchase {
                             phar.getPharma().viewAllOrders(phar);
                         } else if (option == 5) {
                             phar.getPharma().Logout(user);
+                            System.out.println("Pharmacist is already logged-out!");
                             break;
-                            
+
                         } else {
                             System.out.println("Invalid Input!");
                         }
 
                     }
                 } else {
-                    Customer c = ((Customer)user);
+                    Customer c = ((Customer) user);
                     while (true) {
+                        System.out.println("----------------Welcome to " + phar.getName() + '!' + "----------------");
+                        System.out.println("Enter the activity you wanto do!");
+                        System.out.println("-----------------------------------");
                         System.out.println("1. View Medicines\n2. Purchase\n3. Payment\n4. View Orders\n5. Log Out");
                         int choose = input.nextInt();
                         if (choose == 1) {
                             c.allMedicines(phar);
                         } else if (choose == 2) {
-                            c.purchaseMedicine(phar, user);                          
+                            c.purchaseMedicine(phar, user);
                         } else if (choose == 3) {
-                            if(c instanceof Senior){
-                                ((Senior) c).paymentWithDiscout(phar, user);                               
-                            }
-                            else {
-                                ((Adult)c).payment(phar,user);
+                            if (c instanceof Senior) {
+                                ((Senior) c).paymentWithDiscout(phar, user);
+                            } else {
+                                ((Adult) c).payment(phar, user);
                             }
                         } else if (choose == 4) {
                             c.viewMyOrders(phar, user);
                         } else if (choose == 5) {
                             user.Logout(user);
+                            System.out.println("--------------------------------------------------------");
+                            System.out.println("Thank you for patronizng LEulin's Online Pharmacy!");
                             break;
                         } else {
                             System.out.println("Invalid Input!");

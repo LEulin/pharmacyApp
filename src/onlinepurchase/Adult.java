@@ -154,6 +154,11 @@ public class Adult extends Customer{
                     int qty = input.nextInt();
                     if(qty > a.getMedForHeadache().get(i).getQuantity()){
                         System.out.println("Insufficient stock to order!");
+                    }else if(qty == a.medForHeadache.get(i).getQuantity()){
+                        a.medForHeadache.remove(i);
+                        for(int x = 0 ; x<a.medForHeadache.size() ; x++){
+                            a.medForHeadache.get(x).setID(x + 1);
+                        }
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForHeadache().get(i).getID(),a.getMedForHeadache().get(i).getBrandname(),qty,a.getMedForHeadache().get(i).getPrice()*qty);
@@ -163,9 +168,7 @@ public class Adult extends Customer{
                 } 
                 count++;
             }
-            if(count == a.getMedForHeadache().size()){
-                System.out.println("Error! No existing order!");
-            }
+
         }
         else if(choice == 2){
             int count = 0;
@@ -177,6 +180,11 @@ public class Adult extends Customer{
                     int qty = input.nextInt();
                     if(qty > a.getMedForAllergies().get(i).getQuantity()){
                         System.out.println("Insufficient stock to order!");
+                    }else if(qty == a.medForAllergies.get(i).getQuantity()){
+                        a.medForAllergies.remove(i);
+                        for(int x = 0 ; x<a.medForAllergies.size() ; x++){
+                            a.medForAllergies.get(x).setID(x + 1);
+                        }
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForAllergies().get(i).getID(),a.getMedForAllergies().get(i).getBrandname(),qty,a.getMedForAllergies().get(i).getPrice()*qty);
@@ -186,9 +194,7 @@ public class Adult extends Customer{
                 }
                 count++;
             }
-            if(count == a.getMedForAllergies().size()){
-                System.out.println("Error! No existing order!");
-            }
+            
         }
         else if(choice == 3){
             int count = 0;
@@ -200,6 +206,11 @@ public class Adult extends Customer{
                     int qty = input.nextInt();
                     if(qty > a.getMedForBodyPain().get(i).getQuantity()){
                         System.out.println("Insufficient stock to order!");
+                    }else if(qty == a.medForBodyPain.get(i).getQuantity()){
+                        a.medForBodyPain.remove(i);
+                        for(int x = 0 ; x<a.medForBodyPain.size() ; x++){
+                            a.medForBodyPain.get(x).setID(x + 1);
+                        }
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForBodyPain().get(i).getID(),a.getMedForBodyPain().get(i).getBrandname(),qty,a.getMedForBodyPain().get(i).getPrice()*qty);
@@ -209,9 +220,7 @@ public class Adult extends Customer{
                 }
                 count++;
             }
-            if(count == a.getMedForBodyPain().size()){
-                System.out.println("Error! No existing order!");
-            }
+            
         }
         else if(choice == 4){
             int count = 0;
@@ -223,6 +232,11 @@ public class Adult extends Customer{
                     int qty = input.nextInt();
                     if(qty > a.getMedForCough().get(i).getQuantity()){
                         System.out.println("Insufficient stock to order!");
+                    }else if(qty == a.medForCough.get(i).getQuantity()){
+                        a.medForCough.remove(i);
+                        for(int x = 0 ; x<a.medForCough.size() ; x++){
+                            a.medForCough.get(x).setID(x + 1);
+                        }
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForCough().get(i).getID(),a.getMedForCough().get(i).getBrandname(),qty,a.getMedForCough().get(i).getPrice()*qty);
@@ -232,9 +246,7 @@ public class Adult extends Customer{
                 }
                 count++;
             }
-            if(count == a.getMedForCough().size()){
-                System.out.println("Error! No existing order!");
-            }
+            
         }
         else {
             System.out.println("Invalid choice!");

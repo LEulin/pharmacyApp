@@ -94,7 +94,6 @@ public class Pharmacist extends User {
     //methods for removing medicines
     
     public void removeMedicineForCough(Pharmacy a) {
-//        displayAvailableMedicinesForCough(a);
         System.out.print("Enter medicine ID to remove: ");
         int choice = input.nextInt();
         for(int i = 0; i < a.getMedForCough().size(); i++){
@@ -109,7 +108,6 @@ public class Pharmacist extends User {
     
     
     public void removeMedicineForHeadache(Pharmacy a) {
-//        displayAvailableMedicinesForHeadache(a);
         System.out.print("Enter medicine ID to remove: ");
         int choice = input.nextInt();
         for(int i = 0; i < a.getMedForHeadache().size(); i++){
@@ -125,7 +123,6 @@ public class Pharmacist extends User {
     
     
     public void removeMedicineForBodyPain(Pharmacy a) {
-//        displayAvailableMedicinesForBodypain(a);
         System.out.print("Enter medicine ID to remove: ");
         int choice = input.nextInt();
         for(int i = 0; i < a.getMedForBodyPain().size(); i++){
@@ -140,7 +137,6 @@ public class Pharmacist extends User {
     
     
     public void removeMedicineForAllergies(Pharmacy a) {
-//        displayAvailableMedicinesForAllergies(a);
         System.out.print("Enter medicine ID to remove: ");
         int choice = input.nextInt();
         for(int i = 0; i < a.getMedForAllergies().size(); i++){
