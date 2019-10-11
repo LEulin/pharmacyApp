@@ -22,8 +22,107 @@ public class Adult extends Customer{
         super(Id,username,password,age);
     }
     
-    public void payment(){
-        
+    public void payment(Pharmacy a, User e){
+        Customer c = ((Customer)e);
+        c.viewMyOrders(a, e);
+        System.out.print("Enter Order ID to pay: ");
+        int orderid = input.nextInt();
+        for(int i = 0; i<a.getOrderList().size();i++){
+            if(a.getOrderList().get(i).getId() == orderid && a.getOrderList().get(i).getUserId() == c.getId()){
+                double amount = a.getOrderList().get(i).getPrice();
+                System.out.println("You're payment is: "+amount);
+                System.out.print("Enter payment: ");
+                double cash = input.nextDouble();
+                if((cash-amount) == 0){
+                    System.out.println("Your money is exact!\nThank you for paying!");
+                    for(int j = 0; j<a.getMedForAllergies().size();j++){
+                        if(a.getOrderList().get(i).getMedName().equals(a.getMedForAllergies().get(j).getBrandname())){
+                            Medicine med = a.getMedForAllergies().get(j);
+                            if(med.getQuantity() == a.getOrderList().get(i).getQty()){
+                                a.getMedForAllergies().remove(med);
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now out of stock!");
+                            }
+                            else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
+                                med.setQuantity(med.getQuantity() - a.getOrderList().get(i).getQty());
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now updated!");
+                            }
+                            else {
+                                System.out.println("Insufficient stock!");
+                            }                     
+                        }
+                    }
+                    for(int j = 0; j<a.getMedForHeadache().size();j++){
+                        if(a.getOrderList().get(i).getMedName().equals(a.getMedForHeadache().get(j).getBrandname())){
+                            Medicine med = a.getMedForHeadache().get(j);
+                            if(med.getQuantity() == a.getOrderList().get(i).getQty()){
+                                a.getMedForHeadache().remove(med);
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now out of stock!");
+                            }
+                            else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
+                                med.setQuantity(med.getQuantity() - a.getOrderList().get(j).getQty());
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now updated!");
+                            }
+                            else {
+                                System.out.println("Insufficient stock!");
+                            }                     
+                        }
+                    }
+                    for(int j = 0; j<a.getMedForBodyPain().size();j++){
+                        if(a.getOrderList().get(i).getMedName().equals(a.getMedForBodyPain().get(j).getBrandname())){
+                            Medicine med = a.getMedForBodyPain().get(j);
+                            if(med.getQuantity() == a.getOrderList().get(i).getQty()){
+                                a.getMedForBodyPain().remove(med);
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now out of stock!");
+                            }
+                            else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
+                                med.setQuantity(med.getQuantity() - a.getOrderList().get(j).getQty());
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now updated!");
+                            }
+                            else {
+                                System.out.println("Insufficient stock!");
+                            }                     
+                        }
+                    }
+                    for(int j = 0; j<a.getMedForCough().size();j++){
+                        if(a.getOrderList().get(i).getMedName().equals(a.getMedForCough().get(j).getBrandname())){
+                            Medicine med = a.getMedForCough().get(j);
+                            if(med.getQuantity() == a.getOrderList().get(i).getQty()){
+                                a.getMedForCough().remove(med);
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now out of stock!");
+                            }
+                            else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
+                                med.setQuantity(med.getQuantity() - a.getOrderList().get(j).getQty());
+                                a.getOrderList().remove(a.getOrderList().get(i));
+                                System.out.println("Medicine is now updated!");
+                            }
+                            else {
+                                System.out.println("Insufficient stock!");
+                            }                     
+                        }
+                    }
+                    
+                    
+                }
+                else if((cash-amount)>0){
+                    System.out.println("Thank you for paying! \nYour change is: "+(cash-amount));
+                    a.getOrderList().remove(a.getOrderList().get(i));
+                
+                }
+                else {
+                    System.out.println("Money is insufficient!");
+                }
+                
+            
+            
+            }
+        }
     }
 
     @Override

@@ -19,6 +19,7 @@ public class OnlinePurchase {
             System.out.println("1. Login\n2. Register");
             System.out.print("Enter choice: ");
             int choice = input.nextInt();
+            user = new User();
             if (choice == 1) {
                 user = user.Login(phar, user);
                 if (user == phar.getPharma() == true) {
@@ -79,10 +80,10 @@ public class OnlinePurchase {
                             c.purchaseMedicine(phar, user);                          
                         } else if (choose == 3) {
                             if(c instanceof Senior){
-                                
+                                ((Senior) c).paymentWithDiscout(phar, user);                               
                             }
                             else {
-                                
+                                ((Adult)c).payment(phar,user);
                             }
                         } else if (choose == 4) {
                             c.viewMyOrders(phar, user);
@@ -92,7 +93,6 @@ public class OnlinePurchase {
                         } else {
                             System.out.println("Invalid Input!");
                         }
-
                     }
                 }
 

@@ -67,9 +67,9 @@ public class User implements UserOperation {
         a.getMedForHeadache().add(new MedicinesForHeadache(1, "Biogesic 325", "Paracetamol", "Headache", 6, 50));
         a.getMedForHeadache().add(new MedicinesForHeadache(2, "Biogesic", "Paracetamol", "Headache", 8, 50));
         a.getMedForHeadache().add(new MedicinesForHeadache(3, "UHP Fevertab", "Paracetamol", "Headache", 5, 50));
-        a.getOrderList().add(new Orders(15, 1, 1, "Body Pain", 4, 33));
-        a.getOrderList().add(new Orders(11, 3, 2, "Body Pain", 6, 50));
-        a.getOrderList().add(new Orders(91, 2, 11, "Headache", 6, 40));
+        a.getOrderList().add(new Orders(1, 1, 1, "Body Pain", 4, 33));
+        a.getOrderList().add(new Orders(2, 3, 2, "Body Pain", 6, 50));
+        a.getOrderList().add(new Orders(3, 2, 11, "Headache", 6, 40));
     }
 
     @Override
@@ -228,9 +228,7 @@ public class User implements UserOperation {
 
     @Override
     public User Logout(User e) {
-        User b = new User();
-        b = null;
-        return b;
+        return e;
     }
 
     public void Error() {
