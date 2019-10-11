@@ -22,35 +22,6 @@ public abstract class Customer extends User implements CustomerOperation {
     public void setAccount(Account account) {
         this.account = account;
     }
-
-    //methods for view available medicines
-    @Override
-    public void viewAvailableMedicinesForCough(MedicinesForCough med) {
-
-        
-    }
-
-    @Override
-    public void viewAvailableMedicinesForHeadache(MedicinesForHeadache med) {
-
-        
-    }
-
-    @Override
-    public void viewAvailableMedicinesForBodyPain(MedicinesForBodyPain med) {
-
-       
-    }
-
-    @Override
-    public void viewAvailableMedicinesForAllergies(MedicinesForAllergies med) {
-
-    }
-    
-    public void orderItem(Pharmacy a, User e){
-        
-    
-    }
     
     public void viewMyOrders(Pharmacy a, User e){
         System.out.printf("%10s %5s %10s %5s %10s %5s %20s %5s %20s %10s %10s", "Order ID", "|", "User ID", "|", "Medicine ID", "|", "Medicine Name", "|", "Quantity", "|", "Price\n");

@@ -17,6 +17,8 @@ public class OnlinePurchase {
         user.addAllInfo(phar);
 
         while (true) {
+            System.out.println("Pharmacist given account: [Username: 'Lealyn', Password: 'Eulin']");
+            System.out.println("Customers given accounts: [(Adult) Username: 'LEulin', Password: Simple]\n[(Adult) Username: 'Kokoy', Password: 12345]\n[(Senior Citizen) Username: 'Pong', Password: pn123]");
             System.out.println("1. Login\n2. Register");
             System.out.print("Enter choice: ");
             int choice = input.nextInt();
@@ -25,9 +27,9 @@ public class OnlinePurchase {
                 user = user.Login(phar, user);
                 if (user == phar.getPharma() == true) {
                     System.out.println("----------------Welcome to " + phar.getName() + '!' + "----------------");
-                    System.out.println("Enter the activity you wanto do!");
-                    System.out.println("-----------------------------------");
                     while (true) {
+                        System.out.println("Enter the activity you wanto do!");
+                        System.out.println("-----------------------------------");
                         System.out.println("1. Add Medicine\n2. Remove Medicine\n3. View Medicines\n4. View Orders\n5. Log out");
                         System.out.print("Enter choice: ");
                         int option = input.nextInt();
@@ -77,9 +79,10 @@ public class OnlinePurchase {
                     }
                 } else {
                     Customer c = ((Customer) user);
-                    while (true) {
                         System.out.println("----------------Welcome to " + phar.getName() + '!' + "----------------");
-                        System.out.println("Enter the activity you wanto do!");
+                    while (true) {
+                        System.out.println("");
+                        System.out.println("Enter the activity you want to do!");
                         System.out.println("-----------------------------------");
                         System.out.println("1. View Medicines\n2. Purchase\n3. Payment\n4. View Orders\n5. Log Out");
                         int choose = input.nextInt();

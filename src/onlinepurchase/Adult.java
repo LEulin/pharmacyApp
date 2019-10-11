@@ -37,14 +37,13 @@ public class Adult extends Customer{
                     System.out.println("Your money is exact!\nThank you for paying!");
                     for(int j = 0; j<a.getMedForAllergies().size();j++){
                         if(a.getOrderList().get(i).getMedName().equals(a.getMedForAllergies().get(j).getBrandname())){
-                            Medicine med = a.getMedForAllergies().get(j);
-                            if(med.getQuantity() == a.getOrderList().get(i).getQty()){
-                                a.getMedForAllergies().remove(med);
+                            MedicinesForAllergies med = a.getMedForAllergies().get(j);
+                            if(med.getQuantity() == a.getOrderList().get(i).getQty()){                                                                                           
                                 a.getOrderList().remove(a.getOrderList().get(i));
+                                a.getMedForAllergies().remove(med); 
                                 System.out.println("Medicine is now out of stock!");
                             }
                             else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
-                                med.setQuantity(med.getQuantity() - a.getOrderList().get(i).getQty());
                                 a.getOrderList().remove(a.getOrderList().get(i));
                                 System.out.println("Medicine is now updated!");
                             }
@@ -55,14 +54,13 @@ public class Adult extends Customer{
                     }
                     for(int j = 0; j<a.getMedForHeadache().size();j++){
                         if(a.getOrderList().get(i).getMedName().equals(a.getMedForHeadache().get(j).getBrandname())){
-                            Medicine med = a.getMedForHeadache().get(j);
+                            MedicinesForHeadache med = a.getMedForHeadache().get(j);
                             if(med.getQuantity() == a.getOrderList().get(i).getQty()){
-                                a.getMedForHeadache().remove(med);
                                 a.getOrderList().remove(a.getOrderList().get(i));
+                                a.getMedForHeadache().remove(med);
                                 System.out.println("Medicine is now out of stock!");
                             }
                             else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
-                                med.setQuantity(med.getQuantity() - a.getOrderList().get(j).getQty());
                                 a.getOrderList().remove(a.getOrderList().get(i));
                                 System.out.println("Medicine is now updated!");
                             }
@@ -73,14 +71,13 @@ public class Adult extends Customer{
                     }
                     for(int j = 0; j<a.getMedForBodyPain().size();j++){
                         if(a.getOrderList().get(i).getMedName().equals(a.getMedForBodyPain().get(j).getBrandname())){
-                            Medicine med = a.getMedForBodyPain().get(j);
+                            MedicinesForBodyPain med = a.getMedForBodyPain().get(j);
                             if(med.getQuantity() == a.getOrderList().get(i).getQty()){
                                 a.getMedForBodyPain().remove(med);
                                 a.getOrderList().remove(a.getOrderList().get(i));
                                 System.out.println("Medicine is now out of stock!");
                             }
                             else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
-                                med.setQuantity(med.getQuantity() - a.getOrderList().get(j).getQty());
                                 a.getOrderList().remove(a.getOrderList().get(i));
                                 System.out.println("Medicine is now updated!");
                             }
@@ -91,14 +88,13 @@ public class Adult extends Customer{
                     }
                     for(int j = 0; j<a.getMedForCough().size();j++){
                         if(a.getOrderList().get(i).getMedName().equals(a.getMedForCough().get(j).getBrandname())){
-                            Medicine med = a.getMedForCough().get(j);
+                            MedicinesForCough med = a.getMedForCough().get(j);
                             if(med.getQuantity() == a.getOrderList().get(i).getQty()){
                                 a.getMedForCough().remove(med);
                                 a.getOrderList().remove(a.getOrderList().get(i));
                                 System.out.println("Medicine is now out of stock!");
                             }
                             else if(med.getQuantity() > a.getOrderList().get(i).getQty()){
-                                med.setQuantity(med.getQuantity() - a.getOrderList().get(j).getQty());
                                 a.getOrderList().remove(a.getOrderList().get(i));
                                 System.out.println("Medicine is now updated!");
                             }
@@ -141,7 +137,7 @@ public class Adult extends Customer{
         int size = a.getOrderList().size()+1;
         Orders b = new Orders();
         e.allMedicines(a);
-        System.out.println("1. Headache\n2. Allerges\n3. Body Pain\n4. Cough");
+        System.out.println("1. Headache\n2. Allergies\n3. Body Pain\n4. Cough");
         System.out.print("Enter medicine type to purchase: ");
         int choice = input.nextInt();
         if(choice == 1){
@@ -162,6 +158,8 @@ public class Adult extends Customer{
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForHeadache().get(i).getID(),a.getMedForHeadache().get(i).getBrandname(),qty,a.getMedForHeadache().get(i).getPrice()*qty);
+                        a.getMedForHeadache().get(i).setQuantity(a.getMedForHeadache().get(i).getQuantity() - qty);
+                        System.out.println(a.getMedForHeadache().get(i).getQuantity());
                         a.getOrderList().add(b);
                         System.out.println("Successfully ordered!");
                     }               
@@ -188,6 +186,8 @@ public class Adult extends Customer{
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForAllergies().get(i).getID(),a.getMedForAllergies().get(i).getBrandname(),qty,a.getMedForAllergies().get(i).getPrice()*qty);
+                        a.getMedForAllergies().get(i).setQuantity(a.getMedForAllergies().get(i).getQuantity() - qty);
+                        System.out.println(a.getMedForAllergies().get(i).getQuantity());
                         a.getOrderList().add(b);
                         System.out.println("Successfully ordered!");
                     }              
@@ -214,6 +214,8 @@ public class Adult extends Customer{
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForBodyPain().get(i).getID(),a.getMedForBodyPain().get(i).getBrandname(),qty,a.getMedForBodyPain().get(i).getPrice()*qty);
+                        a.getMedForBodyPain().get(i).setQuantity(a.getMedForBodyPain().get(i).getQuantity() - qty);
+                        System.out.println(a.getMedForBodyPain().get(i).getQuantity());
                         a.getOrderList().add(b);
                         System.out.println("Successfully ordered!");
                     }               
@@ -240,6 +242,8 @@ public class Adult extends Customer{
                     }
                     else {
                         b = new Orders(size,e.getId(),a.getMedForCough().get(i).getID(),a.getMedForCough().get(i).getBrandname(),qty,a.getMedForCough().get(i).getPrice()*qty);
+                        a.getMedForCough().get(i).setQuantity(a.getMedForCough().get(i).getQuantity() - qty);
+                        System.out.println(a.getMedForCough().get(i).getQuantity());
                         a.getOrderList().add(b);
                         System.out.println("Successfully ordered!");
                     }
